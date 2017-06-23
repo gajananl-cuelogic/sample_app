@@ -39,9 +39,8 @@ require 'spec_helper'
         end
 
         describe "when email format is invalid" do
-            it "should be invalid" do
-            addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-            foo@bar_baz.com foo@bar+baz.com]
+            it "should be invalid" do            
+            addresses = %w[user@foo,com user_at_foo.org example.user@foo.foo@bar_baz.com foo@bar+baz.com]
                     addresses.each do |invalid_address|
                     @user.email = invalid_address
                     @user.should_not be_valid
@@ -51,7 +50,7 @@ require 'spec_helper'
        
         describe "when email format is valid" do
             it "should be valid" do
-                addresses = %w[user@foo.COM A US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+                addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
                 addresses.each do |valid_address|
                 @user.email = valid_address
                 @user.should be_valid
