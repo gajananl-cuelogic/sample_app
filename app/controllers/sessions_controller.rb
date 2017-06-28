@@ -9,7 +9,7 @@ user = User.find_by_email(params[:session][:email])
         redirect_to user
 		else
 		flash.now[:error] = 'Invalid email/password combination'
-		#render 'new'
+		render 'new'
 	    end
 end
 
